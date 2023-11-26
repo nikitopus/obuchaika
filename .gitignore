@@ -1,0 +1,7 @@
+.*
+!.gitignore
+
+.vscode/
+x64/
+build/
+CMakeLists.txt
