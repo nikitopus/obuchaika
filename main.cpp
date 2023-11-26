@@ -15,37 +15,35 @@ int main()
     NPushkarev::MenuItem study_go_back = {"0 - Хочу назад", NPushkarev::study_go_back};
 
     NPushkarev::MenuItem *study_children[] = {
+        &study_go_back,
         &study_add,
         &study_substract,
         &study_multiply,
         &study_divide,
-        &study_go_back,
     };
     const int study_size = sizeof(study_children) / sizeof(study_children[0]);
 
-    NPushkarev::MenuItem study = {"1 - Хочу учить матан!", NPushkarev::study};
+    NPushkarev::MenuItem study = {"1 - Хочу учить матан!", NPushkarev::show_menu, study_children, study_size};
     NPushkarev::MenuItem exit = {"0 - Я лентяй, я иду лежать...", NPushkarev::exit};
 
     NPushkarev::MenuItem *main_children[] = {&exit, &study};
     const int main_size = sizeof(main_children) / sizeof(main_children[0]);
 
-    NPushkarev::MenuItem main = {nullptr, nullptr};
+    NPushkarev::MenuItem main = {nullptr, NPushkarev::show_menu, main_children, main_size};
 
-    int user_input;
+    study_add.parent = &study;
+    study_substract.parent = &study;
+    study_multiply.parent = &study;
+    study_divide.parent = &study;
+    study_go_back.parent = &study;
+
+    study.parent = &main;
+    exit.parent = &main;
+
+    const NPushkarev::MenuItem *current = &main;
     do
     {
-        std::cout << "Обучайка привествует тебя, ученик!" << std::endl;
-        for (int i = 1; i < main_size; i++)
-        {
-            std::cout << main_children[i]->title << std::endl;
-        }
-        std::cout << main_children[0]->title << std::endl;
-        std::cout << "Обучайка > ";
-
-        std::cin >> user_input;
-        main_children[user_input]->func();
-
-        std::cout << std::endl;
+        current = current->func(current);
     } while (true);
     return 0;
 }

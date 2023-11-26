@@ -1,36 +1,56 @@
 #include "menu_functions.hpp"
+#include "menu.hpp"
 
 #include <cstdlib>
+#include <iostream>
 
-void NPushkarev::main()
+const NPushkarev::MenuItem *NPushkarev::show_menu(const MenuItem *current)
 {
-}
+    std::cout << "Тебя приветствует обучайка!" << std::endl;
+    for (int i = 1; i < current->children_count; i++)
+    {
+        std::cout << current->children[i]->title << std::endl;
+    }
+    std::cout << current->children[0]->title << std::endl;
+    std::cout << "Обучайка > ";
 
-void NPushkarev::exit()
+    int user_input;
+    std::cin >> user_input;
+    std::cout << std::endl;
+
+    return current->children[user_input];
+};
+
+const NPushkarev::MenuItem *NPushkarev::exit(const MenuItem *current)
 {
     std::exit(0);
 }
 
-void NPushkarev::study()
+const NPushkarev::MenuItem *NPushkarev::study_add(const MenuItem *current)
 {
+    std::cout << current->title << std::endl << std::endl;
+    return current->parent;
 }
 
-void NPushkarev::study_add()
+const NPushkarev::MenuItem *NPushkarev::study_substract(const MenuItem *current)
 {
+    std::cout << current->title << std::endl << std::endl;
+    return current->parent;
 }
 
-void NPushkarev::study_substract()
+const NPushkarev::MenuItem *NPushkarev::study_divide(const MenuItem *current)
 {
+    std::cout << current->title << std::endl << std::endl;
+    return current->parent;
 }
 
-void NPushkarev::study_divide()
+const NPushkarev::MenuItem *NPushkarev::study_multipiply(const MenuItem *current)
 {
+    std::cout << current->title << std::endl << std::endl;
+    return current->parent;
 }
 
-void NPushkarev::study_multipiply()
+const NPushkarev::MenuItem *NPushkarev::study_go_back(const MenuItem *current)
 {
-}
-
-void NPushkarev::study_go_back()
-{
+    return current->parent ->parent;
 }
