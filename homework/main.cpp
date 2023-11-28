@@ -4,11 +4,15 @@
 #include "menu_functions.hpp"
 #include "menu_items.hpp"
 
-int main(){
+int main()
+{
+    std::setlocale(LC_ALL, "");
+
     const NPushkarev::MenuItem *current = &NPushkarev::MAIN;
-    do{
+    do
+    {
         current = current->func(current);
-    }while (true);
+    } while (true);
 
     return 0;
 }
