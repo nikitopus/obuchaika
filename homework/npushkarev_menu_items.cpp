@@ -1,5 +1,5 @@
-#include "menu_items.hpp"
-#include "menu_functions.hpp"
+#include "npushkarev_menu_items.hpp"
+#include "npushkarev_menu_functions.hpp"
 
 const NPushkarev::MenuItem NPushkarev::ALG_ADD = {
     "1 - Хочу учиться сложению!", NPushkarev::alg_add, &NPushkarev::ALGEBRA};

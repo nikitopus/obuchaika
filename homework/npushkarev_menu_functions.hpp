@@ -1,6 +1,6 @@
 #pragma once
 
-#include "menu.hpp"
+#include "npushkarev_menu.hpp"
 
 namespace NPushkarev
 {

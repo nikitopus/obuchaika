@@ -1,8 +1,8 @@
 #include <iostream>
 #include <stdlib.h>
 
-#include "menu_functions.hpp"
-#include "menu.hpp"
+#include "npushkarev_menu_functions.hpp"
+#include "npushkarev_menu.hpp"
 
 const NPushkarev::MenuItem *NPushkarev::show_menu(const MenuItem *current)
 {
